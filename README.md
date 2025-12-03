@@ -60,6 +60,8 @@ For more information on using the Angular CLI, including detailed command refere
 
 Analyse du projet 
 
+## Project Structure
+```markdown
 Projet
 │
 ├─ app.html
@@ -144,6 +146,7 @@ Projet
 │           ├─ description
 │           ├─ image
 │           └─ route
+```
 
 Seulement 14 tests sur les 19 présent sont bons, je n'ai pas eu le temps d'en faire plus.
 
