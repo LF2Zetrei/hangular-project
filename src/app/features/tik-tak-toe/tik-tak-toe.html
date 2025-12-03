@@ -1,0 +1,24 @@
+<div class="game">
+  <h2>Tik-Tak-Toe</h2>
+
+  <div class="scores">
+    <p>Score X : {{ scoreX$ | async }}</p>
+    <p>Score O : {{ scoreO$ | async }}</p>
+  </div>
+
+  <div class="board">
+    <div
+      class="cell"
+      *ngFor="let cell of board; let i = index"
+      (click)="play(i)"
+    >
+      {{ cell }}
+    </div>
+  </div>
+
+  <p class="message">{{ message }}</p>
+
+  <button (click)="resetBoard()">Rejouer</button>
+  <div class="gap"></div>
+</div>
+

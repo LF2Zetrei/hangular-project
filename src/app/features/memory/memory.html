@@ -1,0 +1,115 @@
+<div [ngStyle]="{
+    'min-height': '100vh',
+    'display': 'flex',
+    'justify-content': 'center',
+    'align-items': 'center',
+    'background': 'linear-gradient(to bottom, #32073c, #253020)',
+    'padding.px': 20
+  }">
+
+<div [ngStyle]="{
+      'display': 'grid',
+      'grid-template-columns': 'repeat(4, 120px)',
+      'gap.px': 10,
+      'justify-content': 'center',
+      'justify-items': 'center',
+      'padding.px': 20,
+      'background': 'rgba(255,255,255,0.1)',
+      'border-radius.px': 12,
+      'box-shadow': '0 4px 12px rgba(0,0,0,0.2)'
+    }">
+
+  <div *ngFor="let carte of cartes"
+       (click)="revelerCarte(carte)"
+       [ngStyle]="{
+         'width.px': 120,
+         'height.px': 160,
+         'border': '2px solid #333',
+         'border-radius.px': 8,
+         'background-color': carte.hide ? '#8000ff' : 'transparent',
+         'display': 'flex',
+         'align-items': 'center',
+         'justify-content': 'center',
+         'cursor': 'pointer',
+         'overflow': 'hidden'
+       }">
+
+    <img [src]="carte.image"
+         [ngStyle]="{
+           'width': '100%',
+           'height': '100%',
+           'object-fit': 'cover',
+           'opacity': carte.hide ? '0' : '1',
+           'transition': 'opacity 0.3s ease'
+         }"
+         alt="carte" />
+  </div>
+</div>
+</div>
+
+<div *ngIf="win"
+   [ngStyle]="{
+     'position': 'fixed',
+     'top': '0',
+     'left': '0',
+     'width': '100vw',
+     'height': '100vh',
+     'background-color': 'rgba(0,0,0,0.7)',
+     'display': 'flex',
+     'align-items': 'center',
+     'justify-content': 'center',
+     'z-index': 10
+   }">
+
+   <div [ngStyle]="{
+    'position': 'relative',
+    'width.px': 300,
+    'height.px': 400,
+    'border-radius.px': 12,
+    'display': 'flex',
+    'flex-direction': 'column',
+    'align-items': 'center',
+    'justify-content': 'center',
+    'color': 'white',
+    'text-align': 'center',
+    'padding.px': 20,
+    'background-image': 'url(https://www.celestegame.com/images/completes/complete-7.png)',
+    'background-size': 'cover',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat',
+    'box-shadow': '0 4px 20px rgba(0,0,0,0.5)',
+    'overflow': 'hidden'
+  }">
+  
+
+  <div [ngStyle]="{
+        'position': 'absolute',
+        'top': '0',
+        'left': '0',
+        'width': '100%',
+        'height': '100%',
+        'background': 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3))'
+      }"></div>
+
+  <p [ngStyle]="{
+        'position': 'relative',
+        'font-size.px': 20,
+        'font-weight': 'bold',
+        'z-index': 1
+      }">Vous avez atteint le sommet !</p>
+
+  <button (click)="commencerJeu()"
+          [ngStyle]="{
+            'position': 'relative',
+            'padding.px': 10,
+            'margin-top.px': 20,
+            'border': 'none',
+            'border-radius.px': 5,
+            'cursor': 'pointer',
+            'background-color': '#333',
+            'color': 'white',
+            'z-index': 1
+          }">Recommencer</button>
+
+</div>
+</div>

@@ -1,0 +1,29 @@
+<div [ngStyle]="{
+    'min-height': '100vh',
+    'display': 'flex',
+    'justify-content': 'center',
+    'align-items': 'center',
+    'flex-direction': 'column',
+    'background': '#111',
+    'color': '#fff',
+    'font-family': 'Inter, Arial, sans-serif',
+    'padding.px': 20
+}">
+  <h1>Bienvenue sur ton profil !</h1>
+  
+  <p *ngIf="currentUser() as user">
+    Salut <strong>{{ user }}</strong> !<br>
+    Amuses toi bien ici
+  </p>
+
+  <div [ngStyle]="{
+      'margin-top.px': 20,
+      'padding.px': 20,
+      'background': '#222',
+      'border-radius.px': 10,
+      'box-shadow': '0 4px 12px rgba(255,255,255,0.05)',
+      'text-align': 'center'
+    }">
+    <p>Fun fact : Chuck Norris sait que tu es ici 👀</p>
+  </div>
+</div>

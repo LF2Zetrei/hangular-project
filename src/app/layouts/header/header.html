@@ -1,0 +1,52 @@
+<header [ngStyle]="{
+    'width': '100%',
+    'padding.px': 20,
+    'background-color': '#111',
+    'color': '#fff',
+    'display': 'flex',
+    'justify-content': 'space-between',
+    'align-items': 'center',
+    'font-family': 'Inter, Arial, sans-serif'
+}">
+  <a routerLink="/home" [ngStyle]="linkStyle"><h2 [ngStyle]="{'margin': 0, 'font-weight': 'bold'}">Mon Site</h2></a>
+
+  <div [ngStyle]="{'display': 'flex', 'align-items': 'center', 'gap.px': 15}">
+    
+    <div *ngIf="authService.loggedIn$ | async" [ngStyle]="{'display': 'flex', 'align-items': 'center', 'gap.px': 15}">
+      <button (click)="logout()"
+              [ngStyle]="{
+                'padding': '8px 12px',
+                'border-radius': '6px',
+                'border': 'none',
+                'background-color': '#fff',
+                'color': '#111',
+                'cursor': 'pointer'
+              }">
+        Se déconnecter
+      </button>
+
+      <nav [ngStyle]="{'display': 'flex', 'gap.px': 10}">
+        <a routerLink="/memory" [ngStyle]="linkStyle">Memory</a>
+        <a routerLink="/tik-tak-toe" [ngStyle]="linkStyle">Tik Tac Toe</a>
+        <a routerLink="/chuck-norris" [ngStyle]="linkStyle">Chuck Norris</a>
+        <a routerLink="/statistiques" [ngStyle]="linkStyle">Statistiques</a>
+        <a routerLink="/profil" [ngStyle]="linkStyle">Profil</a>
+      </nav>
+    </div>
+
+    <div *ngIf="!(authService.loggedIn$ | async)">
+      <a routerLink="/login"
+         [ngStyle]="{
+           'padding': '8px 12px',
+           'border-radius': '6px',
+           'border': '1px solid #fff',
+           'color': '#fff',
+           'text-decoration': 'none',
+           'cursor': 'pointer'
+         }">
+        Se connecter
+      </a>
+    </div>
+
+  </div>
+</header>

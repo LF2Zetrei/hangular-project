@@ -1,0 +1,178 @@
+<div 
+  [ngStyle]="{
+    'min-height': '100vh',
+    'display': 'flex',
+    'justify-content': 'start',
+    'align-items': 'center',
+    'background': '#111',
+    'flex-direction': 'column',
+    'font-family': 'Inter, Arial, sans-serif',
+    'color': '#fff',
+    'padding': '20px'
+  }"
+>
+  <div 
+    [ngStyle]="{
+      'width':'100%',
+      'background':'#000',
+      'padding':'25px',
+      'color':'#fff',
+      'box-shadow':'0 4px 12px rgba(255,255,255,0.1)'
+    }"
+  >
+    <h1>Bienvenue sur le site de blagues Chuck Norris</h1>
+  </div>
+
+  <div 
+    [ngStyle]="{
+      'width':'1200px',
+      'display':'flex',
+      'flex-direction':'row-reverse',
+      'border-radius':'20px',
+      'justify-content':'space-between',
+      'background':'#222',
+      'margin-top':'50px',
+      'padding':'30px',
+      'box-shadow':'0 6px 18px rgba(255,255,255,0.05)',
+      'border':'1px solid #333'
+    }"
+  >
+    <div 
+      [ngStyle]="{
+        'width':'50%',
+        'background':'#1a1a1a',
+        'padding':'20px',
+        'border-radius':'15px',
+        'border':'1px solid #333',
+        'box-shadow':'0 2px 6px rgba(255,255,255,0.05)'
+      }"
+    >
+      <div><h3>Zone des options :</h3></div>
+
+      <div 
+        [ngStyle]="{
+          'display':'flex',
+          'justify-content':'space-between',
+          'margin':'20px 0'
+        }"
+      >
+        <label>Chercher par catégories :</label>
+        <select 
+          [ngStyle]="{
+            'max-height':'50px',
+            'padding':'8px',
+            'border-radius':'8px',
+            'border':'1px solid #555',
+            'background':'#111',
+            'color':'#fff',
+            'font-size':'14px'
+          }" 
+          (change)="setCat($event)"
+        >
+          <option value="toutes">all</option>
+          <option value="{{c}}" *ngFor="let c of cats | async">{{ c }}</option>
+        </select>
+      </div>
+
+      <div 
+        [ngStyle]="{
+          'display':'flex',
+          'justify-content':'space-between',
+          'margin':'20px 0'
+        }"
+      >
+        <label>Chercher par mots-clés :</label>
+        <form (ngSubmit)="onSubmit()">
+          <input
+            type="text"
+            placeholder="Tape quelque chose..."
+            [(ngModel)]="textValue"
+            name="textValue"
+            [ngStyle]="{
+              'padding':'8px 10px',
+              'border-radius':'8px',
+              'border':'1px solid #555',
+              'background':'#111',
+              'color':'#fff',
+              'font-size':'14px'
+            }"
+          />
+          <button 
+            type="submit"
+            [ngStyle]="{
+              'margin-left':'10px',
+              'padding':'8px 12px',
+              'border-radius':'8px',
+              'background':'#000',
+              'color':'#fff',
+              'border':'1px solid #555',
+              'cursor':'pointer'
+            }"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div 
+      [ngStyle]="{
+        'width':'50%',
+        'background':'#1a1a1a',
+        'padding':'20px',
+        'border-radius':'15px',
+        'border':'1px solid #333',
+        'box-shadow':'0 2px 6px rgba(255,255,255,0.05)'
+      }"
+    >
+      <div><h3>Les blagues :</h3></div>
+
+      <div 
+        [ngStyle]="{
+          'display':'flex',
+          'justify-content':'start',
+          'margin':'20px 0'
+        }"
+      >
+        <label>Catégorie :</label>
+        <div>{{ cat | async }}</div>
+      </div>
+
+      <div>
+        <div>Blague à la demande :</div>
+
+        <div 
+          [ngStyle]="{
+            'margin-top':'10px',
+            'padding':'15px',
+            'background':'#111',
+            'border-radius':'10px',
+            'border':'1px solid #333',
+            'min-height':'70px',
+            'box-shadow':'0 2px 4px rgba(255,255,255,0.05)'
+          }"
+        >
+          {{joke?.value}}
+        </div>
+      </div>
+
+      <div 
+        [ngStyle]="{
+          'display':'flex',
+          'justify-content':'center',
+          'margin-top':'20px'
+        }"
+      >
+        <button 
+          (click)="loadJoke()"
+          [ngStyle]="{
+            'cursor':'pointer',
+            'background-color': '111'
+          }"
+        >
+          <img src="{{joke?.icon_url}}" [ngStyle]="{'width':'100%'}"/>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

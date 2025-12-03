@@ -1,0 +1,29 @@
+<div [ngStyle]="{
+    'min-height': '100vh',
+    'display': 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'center',
+    'align-items': 'center',
+    'background': '#111',
+    'color': '#fff',
+    'font-family': 'Inter, Arial, sans-serif',
+    'padding.px': 20
+}">
+  <div [ngStyle]="{
+      'background': '#222',
+      'padding.px': 30,
+      'border-radius.px': 15,
+      'box-shadow': '0 4px 12px rgba(255,255,255,0.05)',
+      'width.px': 400,
+      'text-align': 'center'
+    }">
+    <h2 [ngStyle]="{'margin-bottom.px': 20, 'color': '#fff'}">Statistiques</h2>
+
+    <p [ngStyle]="{'margin-bottom.px': 10}">
+      Victoires Joueur X : <strong>{{ scoreX$ | async }}</strong>
+    </p>
+    <p>
+      Victoires Joueur O : <strong>{{ scoreO$ | async }}</strong>
+    </p>
+  </div>
+</div>
